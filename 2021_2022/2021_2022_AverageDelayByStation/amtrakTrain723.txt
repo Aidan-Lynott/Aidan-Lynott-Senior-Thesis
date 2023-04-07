@@ -1,0 +1,354 @@
+
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H73C69DFBC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H73C69DFBC');
+</script>
+<meta name="generator" content="HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+<title>ASMAD - Amtrak Status Maps Archive Database - Charts of Historical Amtrak Train Average Delays</title>
+<meta name="description" content="ASMAD - Amtrak Status Maps History and Archive">
+<meta name="keywords" content="ASMAD - Search Past Amtrak Performance, Historical Amtrak on-time performance data, Amtrak Status Maps history, Amtrak Status Maps archive, statusmaps history, statusmaps.net history, statusmaps archive, statusmaps.net archive">
+<meta name="author" content="Christopher Juckins">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../js/latest/jquery-ui.css">
+<script src="../js/latest/external/jquery/jquery.js"></script>
+<script src="../js/latest/jquery-ui.min.js"></script>
+
+<script>
+// http://stackoverflow.com/questions/233553/how-do-i-pre-populate-a-jquery-datepicker-textbox-with-todays-date
+// http://stackoverflow.com/questions/3539292/ipad-web-application-how-do-i-prevent-the-keyboard-from-popping-up-on-jquery-da
+
+$(function() {
+  $( "#from" ).datepicker({
+  showOn: "button",
+  buttonImage: "../img/cal-icon.png",
+  buttonImageOnly: true,
+  showButtonPanel: true,
+  showAnim: 'slideDown',
+  //showAnim: '',
+  changeMonth: true,
+  changeYear: true,
+  buttonText: "Select date",
+  dateFormat: 'mm/dd/yy',
+  // earliest train data available
+  minDate: '07/04/2006',
+  // latest date is today
+  maxDate: '0',
+  //beforeShow: function() {    
+  //  $(".ui-datepicker").css('font-size', 10);
+  //},
+  // reduce text size, prevent iPad popup keyboard
+  beforeShow:   function(dateText, inst) { 
+    $(this).attr("disabled", true); 
+    //$(".ui-datepicker").css('font-size', 10);
+  },
+  // allow iPad popup keyboard
+  onClose: function(dateText, inst) { 
+    $(this).attr("disabled", false); 
+  }
+  });
+
+  $( "#to" ).datepicker({
+  showOn: "button",
+  buttonImage: "../img/cal-icon.png",
+  buttonImageOnly: true,
+  showButtonPanel: true,
+  showAnim: 'slideDown',
+  //showAnim: '',
+  changeMonth: true,
+  changeYear: true,
+  buttonText: "Select date",
+  dateFormat: 'mm/dd/yy',
+  // earliest train data available
+  minDate: '07/04/2006',
+  // latest date is today
+  maxDate: '0',
+  //beforeShow: function(){    
+  //  $(".ui-datepicker").css('font-size', 10);
+  //}
+  // reduce text size, prevent iPad popup keyboard
+  beforeShow:   function(dateText, inst) { 
+    $(this).attr("disabled", true); 
+    //$(".ui-datepicker").css('font-size', 10);
+  },
+  // allow iPad popup keyboard
+  onClose: function(dateText, inst) { 
+    $(this).attr("disabled", false); 
+  }
+  });
+});
+
+</script>
+<link href="main.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="stretch-padding">
+<div id="page-wrap">
+
+
+
+<script>
+if (top.location != location) {
+  document.write('<p class="content"><a style="text-decoration:underline;" target="_top" href="/amtrak_status/archive/html/average_delays.php?train_num=723&date_start=01%2F01%2F2021&date_end=12%2F31%2F2022&df1=1&df2=1&df3=1&df4=1&df5=1&df6=1&df7=1&stat=med&chartsize=2&dfon=1">Click to see Full Page of Archive Results</a></p><br>')
+}
+</script>
+
+<a href="home.php"><span class="logoparent"><span class="logochild">ASMAD</span></span>
+<span class="titlewithlogo">Amtrak Status Maps Archive Database</span><br>
+<span class="titletag">Historical Amtrak on-time performance data</span></a>
+<p class="navigation_top5"><a href="home.php"><b>Home</b></a> &nbsp;&nbsp; <a href="search.php"><b>Search Amtrak Data</b></a> &nbsp;&nbsp; <a href="resources.php"><b>Amtrak Resources</b></a> &nbsp;&nbsp; <a href="help.php"><b>Help</b></a> &nbsp;&nbsp; <a href="about.php"><b>About</b></a></p>
+<hr>
+<p class="content-i-bold">Past Amtrak Delays - Average or Median Values by Train Number for Each Station</p>
+<p class="content">Here you can find past average (mean) or median Amtrak delays for a train's route. Average is 
+the default, but can be skewed by single values that are extremely high or low.  Median is a better representation in 
+those cases.<br><br>
+To begin, enter the train number and the dates you want to search.<br>
+<div class="form_indent">
+<form id="query" action="/amtrak_status/archive/html/average_delays.php" method="get"><fieldset class="fieldset1">
+<p class="content-bold">Train number: <input type="text" size="4"  maxlength="4" name="train_num" value="723">
+<p class="content-bold">Start date: <input id="from" type="text" size="10" maxlength="10" name="date_start" value="01/01/2021">&nbsp;&nbsp;&nbsp;End date: <input id="to" type="text" size="10" maxlength="10" name="date_end" value="12/31/2022">&nbsp;&nbsp;
+
+<p class="content-bold">Originating on: <input class="input-valign" type="checkbox" name="df1" value="1" checked="checked">Su &nbsp;<input class="input-valign" type="checkbox" name="df2" value="1" checked="checked">Mo &nbsp;<input class="input-valign" type="checkbox" name="df3" value="1" checked="checked">Tu &nbsp;<input class="input-valign" type="checkbox" name="df4" value="1" checked="checked">We &nbsp;<input class="input-valign" type="checkbox" name="df5" value="1" checked="checked">Th &nbsp;<input class="input-valign" type="checkbox" name="df6" value="1" checked="checked">Fr &nbsp;<input class="input-valign" type="checkbox" name="df7" value="1" checked="checked">Sa
+<p class="content-bold">Statistic type: <input name="stat" type="radio" value="avg" >Average <input name="stat" type="radio" value="med" checked>Median 
+<p class="content-bold">Chart size: <input name="chartsize" type="radio" value="1" >Small <input name="chartsize" type="radio" value="2" checked>Medium <input name="chartsize" type="radio" value="3" >Large <input name="chartsize" type="radio" value="4" >X-Large 
+
+<p class="content"><input class="myButton" type="submit" value="Find Data"> &nbsp;<input type="hidden" name="dfon" value="1"><input type="button" class="myButton" value="Reset" onClick="location.href='/amtrak_status/archive/html/average_delays.php'">
+</fieldset>
+
+</form>
+
+</div>
+<p class="content">15 stations found.
+<br>
+<script src="https://www.google.com/jsapi"></script>
+<div class="chart_indent" id="chart_div" style="width: 700px; height: 525px;"></div>
+<script>
+google.load('visualization', '1', {packages:['corechart']});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Station');
+  data.addColumn('number', 'Median AR Delay');
+  data.addColumn('number', 'Median DP Delay');
+  data.addColumn('string', 'schAr_date_begin');
+  data.addColumn('string', 'schAr_date_end');
+  data.addColumn('string', 'schDp_date_begin');
+  data.addColumn('string', 'schDp_date_end');
+  data.addRows([
+['SAC', null, 0, 'null', 'null', '01/01/2021', '12/31/2022'],
+['DAV', 0, 0, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['FFV', 0, 0, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['SUI', 0, 0, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['MTZ', 0, 1, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['RIC', 0, 0, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['BKY', -2, 0, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['EMY', 0, 0, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['OKJ', 0, 1, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['OAC', -1, 1, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['HAY', 1, 2, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['FMT', 3, 4, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['GAC', 3, 6, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['SCC', 2, 5, '01/01/2021', '12/31/2022', '01/01/2021', '12/31/2022'],
+['SJC', -5, null, '01/01/2021', '12/31/2022', 'null', 'null'],
+]);
+  var view = new google.visualization.DataView(data);
+  view.setColumns([0, 1, 2]);
+  var options = {
+    title: 'Train 723 Median Delays by Station - Originating 01/01/2021 to 12/31/2022',
+    titlePosition: 'out',
+    backgroundColor: { strokeWidth: 1 },
+    chartArea: { backgroundColor: '#f8f8f8', top: '10%', left: '10%', width:'85%', height: '68%' },
+    fontSize: 'automatic',
+    colors: ['#b2c2f0', '#0033cc'],
+    legend: { position: 'bottom' },
+    tooltip: {isHtml: false},
+    vAxis: {title: 'Minutes', titleTextStyle: {color: 'black', italic:false}, ticks: [-15,0,15,30,45,60]},
+    hAxis: {title: 'Station Code', titleTextStyle: {italic:false}, slantedText: true, slantedTextAngle: 45},
+  };
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  chart.draw(view, options);
+  document.getElementById('png').outerHTML = '<span class="content"><a href="' + chart.getImageURI() + '">Link to printable image<\/a><\/span>';
+  function selectHandler() {
+    var selection = chart.getSelection();
+    var item = selection[0];
+    if (item.row != null && item.column != null) {
+      var columnLabel = data.getColumnLabel(item.column);
+      if (columnLabel == 'Median DP Delay') {
+        //alert('sort by DP');
+        window.location = ( 'historychart.php?train_num=723&sort=d_dp&chartsize=2&smooth=0&date_start=' + data.getValue(chart.getSelection()[0]['row'], 5) + '&date_end=' + data.getValue(chart.getSelection()[0]['row'], 6) + '&station=' + data.getValue(chart.getSelection()[0]['row'], 0) );
+      }
+      if (columnLabel == 'Median AR Delay') {
+        //alert('sort by AR');
+        window.location = ( 'historychart.php?train_num=723&sort=d_ar&chartsize=2&smooth=0&date_start=' + data.getValue(chart.getSelection()[0]['row'], 3) + '&date_end=' + data.getValue(chart.getSelection()[0]['row'], 4) + '&station=' + data.getValue(chart.getSelection()[0]['row'], 0) );
+      }
+    }
+  }
+  google.visualization.events.addListener(chart, 'select', selectHandler); 
+}
+</script>
+<div id='png'></div>
+<br><br>
+<table>
+<tr>
+<th colspan="6">Train 723 Median Delays by Station (minutes)<br>Originating 01/01/2021 to 12/31/2022</th></tr>
+<tr><th style="text-align:left">Station<br>Code</th><th style="text-align:left">Station<br>Name</th><th style="text-align:center">Median<br>Ar</th><th style="text-align:center">Available<br>Data*</th><th style="text-align:center">Median<br>Dp</th><th style="text-align:center">Available<br>Data*</th>
+<tr>
+<td style="color:black;">SAC</td>
+<td style="color:black;">Sacramento, CA</td>
+<td style="color:black; background-color:white;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=null&amp;date_end=null&amp;station=SAC"></a></td>
+<td style="color:black;"></td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=SAC">0</a></td>
+<td style="color:black;">100%</td>
+</tr>
+
+<tr>
+<td style="color:black;">DAV</td>
+<td style="color:black;">Davis, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=DAV">0</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=DAV">0</a></td>
+<td style="color:black;">100%</td>
+</tr>
+
+<tr>
+<td style="color:black;">FFV</td>
+<td style="color:black;">Fairfield-Vacaville, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=FFV">0</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=FFV">0</a></td>
+<td style="color:black;">100%</td>
+</tr>
+
+<tr>
+<td style="color:black;">SUI</td>
+<td style="color:black;">Suisun-Fairfield, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=SUI">0</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=SUI">0</a></td>
+<td style="color:black;">100%</td>
+</tr>
+
+<tr>
+<td style="color:black;">MTZ</td>
+<td style="color:black;">Martinez, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=MTZ">0</a></td>
+<td style="color:black;">39%</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=MTZ">1</a></td>
+<td style="color:black;">99%</td>
+</tr>
+
+<tr>
+<td style="color:black;">RIC</td>
+<td style="color:black;">Richmond, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=RIC">0</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=RIC">0</a></td>
+<td style="color:black;">99%</td>
+</tr>
+
+<tr>
+<td style="color:black;">BKY</td>
+<td style="color:black;">Berkeley, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=BKY">-2</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=BKY">0</a></td>
+<td style="color:black;">100%</td>
+</tr>
+
+<tr>
+<td style="color:black;">EMY</td>
+<td style="color:black;">Emeryville, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=EMY">0</a></td>
+<td style="color:black;">100%</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=EMY">0</a></td>
+<td style="color:black;">97%</td>
+</tr>
+
+<tr>
+<td style="color:black;">OKJ</td>
+<td style="color:black;">Oakland - Jack London Sq, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=OKJ">0</a></td>
+<td style="color:black;">100%</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=OKJ">1</a></td>
+<td style="color:black;">98%</td>
+</tr>
+
+<tr>
+<td style="color:black;">OAC</td>
+<td style="color:black;">Oakland - Coliseum Airport, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=OAC">-1</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=OAC">1</a></td>
+<td style="color:black;">99%</td>
+</tr>
+
+<tr>
+<td style="color:black;">HAY</td>
+<td style="color:black;">Hayward, CA</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=HAY">1</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=HAY">2</a></td>
+<td style="color:black;">98%</td>
+</tr>
+
+<tr>
+<td style="color:black;">FMT</td>
+<td style="color:black;">Fremont, CA</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=FMT">3</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=FMT">4</a></td>
+<td style="color:black;">99%</td>
+</tr>
+
+<tr>
+<td style="color:black;">GAC</td>
+<td style="color:black;">Santa Clara - Great America, CA</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=GAC">3</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=GAC">6</a></td>
+<td style="color:black;">100%</td>
+</tr>
+
+<tr>
+<td style="color:black;">SCC</td>
+<td style="color:black;">Santa Clara, CA</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=SCC">2</a></td>
+<td style="color:black;">3%</td>
+<td style="color:black; background-color:#ffe6e6;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=SCC">5</a></td>
+<td style="color:black;">96%</td>
+</tr>
+
+<tr>
+<td style="color:black;">SJC</td>
+<td style="color:black;">San Jose, CA</td>
+<td style="color:black; background-color:#e6f2e6;"><a href="historychart.php?train_num=723&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0&amp;date_start=01/01/2021&amp;date_end=12/31/2022&amp;station=SJC">-5</a></td>
+<td style="color:black;">100%</td>
+<td style="color:black; background-color:white;"><a href="historychart.php?train_num=723&amp;sort=d_dp&amp;chartsize=2&amp;smooth=0&amp;date_start=null&amp;date_end=null&amp;station=SJC"></a></td>
+<td style="color:black;"></td>
+</tr>
+</table>
+<br>
+<p class="content">* Available Data = (actual delay reports / expected delay reports) for train status files discovered over the selected date range.<br>
+100% represents no missing reports and a high confidence of the average calculation.</p>
+<p class="content">In general, ASMAD contains more Departure information than Arrival information.</p>
+
+<br><hr>
+<p class="navigation_bot5">
+Database last updated Wednesday January 11, 2023 4:28 AM EST<br>
+<br>Amtrak Status Maps data provided and maintained by <a href="http://statusmaps.com">statusmaps.com</a>
+<br>This website <a href="https://juckins.net">(juckins.net)</a> is not affiliated with <a href="http://amtrak.com">amtrak.com</a> or Amtrak (the National Railroad Passenger Corporation)
+</p>
+</div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,394 @@
+
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H73C69DFBC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H73C69DFBC');
+</script>
+<meta name="generator" content="HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+<title>ASMAD - Amtrak Status Maps Archive Database - Train History Search</title>
+<meta name="description" content="ASMAD - Amtrak Status Maps History and Archive">
+<meta name="keywords" content="ASMAD - Search Past Amtrak Performance, Historical Amtrak on-time performance data, Amtrak Status Maps history, Amtrak Status Maps archive, statusmaps history, statusmaps.com history, statusmaps archive, statusmaps.com archive">
+<meta name="author" content="Christopher Juckins">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../js/latest/jquery-ui.css">
+<script src="../js/latest/external/jquery/jquery.js"></script>
+<script src="../js/latest/jquery-ui.min.js"></script>
+
+<script>
+// http://stackoverflow.com/questions/233553/how-do-i-pre-populate-a-jquery-datepicker-textbox-with-todays-date
+// http://stackoverflow.com/questions/3539292/ipad-web-application-how-do-i-prevent-the-keyboard-from-popping-up-on-jquery-da
+
+$(function() {
+  $( "#from" ).datepicker({
+  showOn: "button",
+  buttonImage: "../img/cal-icon.png",
+  buttonImageOnly: true,
+  showButtonPanel: true,
+  showAnim: 'slideDown',
+  //showAnim: '',
+  changeMonth: true,
+  changeYear: true,
+  buttonText: "Select date",
+  dateFormat: 'mm/dd/yy',
+  // earliest train data available
+  minDate: '07/04/2006',
+  // latest date is today
+  maxDate: '0',
+  //beforeShow: function() {    
+  //  $(".ui-datepicker").css('font-size', 10);
+  //},
+  // reduce text size, prevent iPad popup keyboard
+  beforeShow:   function(dateText, inst) { 
+    $(this).attr("disabled", true); 
+    //$(".ui-datepicker").css('font-size', 10);
+  },
+  // allow iPad popup keyboard
+  onClose: function(dateText, inst) { 
+    $(this).attr("disabled", false); 
+  }
+  });
+
+  $( "#to" ).datepicker({
+  showOn: "button",
+  buttonImage: "../img/cal-icon.png",
+  buttonImageOnly: true,
+  showButtonPanel: true,
+  showAnim: 'slideDown',
+  //showAnim: '',
+  changeMonth: true,
+  changeYear: true,
+  buttonText: "Select date",
+  dateFormat: 'mm/dd/yy',
+  // earliest train data available
+  minDate: '07/04/2006',
+  // latest date is today
+  maxDate: '0',
+  //beforeShow: function(){    
+  //  $(".ui-datepicker").css('font-size', 10);
+  //}
+  // reduce text size, prevent iPad popup keyboard
+  beforeShow:   function(dateText, inst) { 
+    $(this).attr("disabled", true); 
+    //$(".ui-datepicker").css('font-size', 10);
+  },
+  // allow iPad popup keyboard
+  onClose: function(dateText, inst) { 
+    $(this).attr("disabled", false); 
+  }
+  });
+});
+
+</script>
+<link href="main.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="stretch-padding">
+<div id="page-wrap">
+
+
+
+
+
+
+<script>
+if (top.location != location) {
+  document.write('<p class="content"><a style="text-decoration:underline;" target="_top" href="/amtrak_status/archive/html/history.php?train_num=463&station=NHV&date_start=01%2F01%2F2021&date_end=12%2F31%2F2022&df1=1&df2=1&df3=1&df4=1&df5=1&df6=1&df7=1&sort=d_ar&sort_dir=DESC&co=gt&limit_mins=&dfon=1">Click to see Full Page of Archive Results</a></p><br>')
+}
+</script>
+
+<a href="home.php"><span class="logoparent"><span class="logochild">ASMAD</span></span>
+<span class="titlewithlogo">Amtrak Status Maps Archive Database</span><br>
+<span class="titletag">Historical Amtrak on-time performance data</span></a>
+<p class="navigation_top5"><a href="home.php"><b>Home</b></a> &nbsp;&nbsp; <a href="search.php"><b>Search Amtrak Data</b></a> &nbsp;&nbsp; <a href="resources.php"><b>Amtrak Resources</b></a> &nbsp;&nbsp; <a href="help.php"><b>Help</b></a> &nbsp;&nbsp; <a href="about.php"><b>About</b></a></p>
+<hr>
+<p class="content-i-bold">Train Number and/or Station Search of Past Amtrak Performance</p>
+<p class="content">Here you can search Amtrak train performance by their stations and/or train numbers. The list will show how 
+late (or early) a particular train departed or arrived at a station for a range of dates.<br><br>
+To begin, enter the train number or wildcards such as "30*", "2100-2200", "3,4,5,6" or "all". Include the dates and optional 
+<a href="stations.php">station code</a>.<br><br>
+Graphical displays of performance can be made with the <a href="amtrak_delays_charts.php">Google Chart <img src="../img/developers-logo_16px.png" alt="Google Chart icon"></a> page.
+<div class="form_indent">
+<form id="query" action="/amtrak_status/archive/html/history.php" method="get"><fieldset class="fieldset1">
+<p class="content-bold">Train number: <input type="text" size="9"  maxlength="500" name="train_num" value="463">&nbsp;&nbsp;and/or <a href="stations.php">Station code</a>: <input type="text" size="3" maxlength="3" name="station" value="NHV">
+<p class="content-bold">Start date: <input id="from" type="text" size="10" maxlength="10" name="date_start" value="01/01/2021">&nbsp;&nbsp;&nbsp;End date (optional): <input id="to" type="text" size="10" maxlength="10" name="date_end" value="12/31/2022">&nbsp;&nbsp;
+
+<p class="content-bold">Originating on: <input class="input-valign" type="checkbox" name="df1" value="1" checked="checked">Su &nbsp;<input class="input-valign" type="checkbox" name="df2" value="1" checked="checked">Mo &nbsp;<input class="input-valign" type="checkbox" name="df3" value="1" checked="checked">Tu &nbsp;<input class="input-valign" type="checkbox" name="df4" value="1" checked="checked">We &nbsp;<input class="input-valign" type="checkbox" name="df5" value="1" checked="checked">Th &nbsp;<input class="input-valign" type="checkbox" name="df6" value="1" checked="checked">Fr &nbsp;<input class="input-valign" type="checkbox" name="df7" value="1" checked="checked">Sa
+<p class="content-bold">Sort results by: <input class="input-valign" name="sort" type="radio" value="schDp" >Scheduled DP <input class="input-valign" name="sort" type="radio" value="schAr" >Scheduled AR <input class="input-valign" name="sort" type="radio" value="d_dp" >DP Delays <input class="input-valign" name="sort" type="radio" value="d_ar" checked>AR Delays
+<p class="content-bold">Sort direction: <input class="input-valign" type="radio" name="sort_dir" value="ASC" >Ascending <input class="input-valign" type="radio" name="sort_dir" value="DESC" checked>Descending
+<p class="content-bold-gray">Optional: show delays <select name="co"><option value="gt" selected>&gt;</option>
+<option value="gteq">&gt;=</option>
+<option value="eq">=</option>
+<option value="lt">&lt;</option>
+<option value="lteq">&lt;=</option>
+</select> <input type="text" size="4" maxlength="4" name="limit_mins" value=""> minutes
+
+<p class="content"><input class="myButton" type="submit" value="Find Data"> &nbsp;<input type="hidden" name="dfon" value="1"><input type="button" class="myButton" value="Reset" onClick="location.href='/amtrak_status/archive/html/history.php'">
+</fieldset>
+
+</form>
+
+</div>
+<p class="content">116 results found. 
+<a href="historychart.php?train_num=463&amp;station=NHV&amp;date_start=01%2F01%2F2021&amp;date_end=12%2F31%2F2022&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0">(View chart)</a></p>
+<table>
+<tr><th style="text-align:center;" colspan="7">History for Amtrak 463 at NHV (New Haven, CT)</th>
+</tr>
+<tr><th>Origin Date</th><th>Sch Ar</th><th>Act Ar</th><th>Comments</th><th>Ar Delay (mins)</th><th>Service Disruption</th><th>Cancellations</th></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/20/2022&amp;date_end=08/20/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/20/2022 (Sa)</a></td><td>08/20/2022 1:52 PM (Sa)</td><td style="text-align: right;">3:18PM</td><td><span style=color:red;>Ar:  1 hr, 26 min late.</span><span style=color:black;></span></td><td style="text-align: center;">86</td><td style="text-align: center;">SD</td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/04/2022&amp;date_end=09/04/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/04/2022 (Su)</a></td><td>09/04/2022 1:52 PM (Su)</td><td style="text-align: right;">2:29PM</td><td><span style=color:red;>Ar:  37 min late.</span><span style=color:black;></span></td><td style="text-align: center;">37</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/05/2021&amp;date_end=09/05/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/05/2021 (Su)</a></td><td>09/05/2021 1:52 PM (Su)</td><td style="text-align: right;">2:19PM</td><td><span style=color:red;>Ar:  27 min late.</span><span style=color:black;></span></td><td style="text-align: center;">27</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/09/2022&amp;date_end=04/09/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/09/2022 (Sa)</a></td><td>04/09/2022 1:52 PM (Sa)</td><td style="text-align: right;">2:19PM</td><td><span style=color:red;>Ar:  27 min late.</span><span style=color:black;></span></td><td style="text-align: center;">27</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/08/2021&amp;date_end=05/08/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/08/2021 (Sa)</a></td><td>05/08/2021 1:52 PM (Sa)</td><td style="text-align: right;">2:14PM</td><td><span style=color:red;>Ar:  22 min late.</span><span style=color:black;></span></td><td style="text-align: center;">22</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/03/2022&amp;date_end=07/03/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/03/2022 (Su)</a></td><td>07/03/2022 1:52 PM (Su)</td><td style="text-align: right;">2:04PM</td><td><span style=color:red;>Ar:  12 min late.</span><span style=color:black;></span></td><td style="text-align: center;">12</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/06/2022&amp;date_end=08/06/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/06/2022 (Sa)</a></td><td>08/06/2022 1:52 PM (Sa)</td><td style="text-align: right;">2:02PM</td><td><span style=color:red;>Ar:  10 min late.</span><span style=color:black;></span></td><td style="text-align: center;">10</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/21/2021&amp;date_end=08/21/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/21/2021 (Sa)</a></td><td>08/21/2021 1:52 PM (Sa)</td><td style="text-align: right;">2:00PM</td><td><span style=color:red;>Ar:  8 min late.</span><span style=color:black;></span></td><td style="text-align: center;">8</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/08/2022&amp;date_end=01/08/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/08/2022 (Sa)</a></td><td>01/08/2022 1:52 PM (Sa)</td><td style="text-align: right;">2:00PM</td><td><span style=color:red;>Ar:  8 min late.</span><span style=color:black;></span></td><td style="text-align: center;">8</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/13/2022&amp;date_end=08/13/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/13/2022 (Sa)</a></td><td>08/13/2022 1:52 PM (Sa)</td><td style="text-align: right;">2:00PM</td><td><span style=color:red;>Ar:  8 min late.</span><span style=color:black;></span></td><td style="text-align: center;">8</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/19/2022&amp;date_end=02/19/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/19/2022 (Sa)</a></td><td>02/19/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:59PM</td><td><span style=color:red;>Ar:  7 min late.</span><span style=color:black;></span></td><td style="text-align: center;">7</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/23/2022&amp;date_end=07/23/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/23/2022 (Sa)</a></td><td>07/23/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:59PM</td><td><span style=color:red;>Ar:  7 min late.</span><span style=color:black;></span></td><td style="text-align: center;">7</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/27/2021&amp;date_end=11/27/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/27/2021 (Sa)</a></td><td>11/27/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:58PM</td><td><span style=color:red;>Ar:  6 min late.</span><span style=color:black;></span></td><td style="text-align: center;">6</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/07/2021&amp;date_end=08/07/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/07/2021 (Sa)</a></td><td>08/07/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:57PM</td><td><span style=color:red;>Ar:  5 min late.</span><span style=color:black;></span></td><td style="text-align: center;">5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/30/2022&amp;date_end=07/30/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/30/2022 (Sa)</a></td><td>07/30/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:57PM</td><td><span style=color:red;>Ar:  5 min late.</span><span style=color:black;></span></td><td style="text-align: center;">5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/05/2021&amp;date_end=06/05/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/05/2021 (Sa)</a></td><td>06/05/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:56PM</td><td><span style=color:red;>Ar:  4 min late.</span><span style=color:black;></span></td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/30/2021&amp;date_end=10/30/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/30/2021 (Sa)</a></td><td>10/30/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:56PM</td><td><span style=color:red;>Ar:  4 min late.</span><span style=color:black;></span></td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/13/2021&amp;date_end=11/13/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/13/2021 (Sa)</a></td><td>11/13/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:56PM</td><td><span style=color:red;>Ar:  4 min late.</span><span style=color:black;></span></td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/20/2021&amp;date_end=11/20/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/20/2021 (Sa)</a></td><td>11/20/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:56PM</td><td><span style=color:red;>Ar:  4 min late.</span><span style=color:black;></span></td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/19/2022&amp;date_end=03/19/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/19/2022 (Sa)</a></td><td>03/19/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:56PM</td><td><span style=color:red;>Ar:  4 min late.</span><span style=color:black;></span></td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/19/2022&amp;date_end=11/19/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/19/2022 (Sa)</a></td><td>11/19/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:56PM</td><td><span style=color:red;>Ar:  4 min late.</span><span style=color:black;></span></td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/30/2021&amp;date_end=01/30/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/30/2021 (Sa)</a></td><td>01/30/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:55PM</td><td><span style=color:red;>Ar:  3 min late.</span><span style=color:black;></span></td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/19/2021&amp;date_end=06/19/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/19/2021 (Sa)</a></td><td>06/19/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:55PM</td><td><span style=color:red;>Ar:  3 min late.</span><span style=color:black;></span></td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/25/2021&amp;date_end=09/25/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/25/2021 (Sa)</a></td><td>09/25/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:55PM</td><td><span style=color:red;>Ar:  3 min late.           </span><span style=color:black;></span></td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/02/2021&amp;date_end=10/02/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/02/2021 (Sa)</a></td><td>10/02/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:55PM</td><td><span style=color:red;>Ar:  3 min late.           </span><span style=color:black;></span></td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/09/2021&amp;date_end=10/09/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/09/2021 (Sa)</a></td><td>10/09/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:55PM</td><td><span style=color:red;>Ar:  3 min late.           </span><span style=color:black;></span></td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/16/2022&amp;date_end=07/16/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/16/2022 (Sa)</a></td><td>07/16/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:55PM</td><td><span style=color:red;>Ar:  3 min late.</span><span style=color:black;></span></td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/17/2021&amp;date_end=04/17/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/17/2021 (Sa)</a></td><td>04/17/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:54PM</td><td><span style=color:red;>Ar:  2 min late.</span><span style=color:black;></span></td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/29/2021&amp;date_end=05/29/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/29/2021 (Sa)</a></td><td>05/29/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:54PM</td><td><span style=color:red;>Ar:  2 min late.</span><span style=color:black;></span></td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/14/2021&amp;date_end=08/14/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/14/2021 (Sa)</a></td><td>08/14/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:54PM</td><td><span style=color:red;>Ar:  2 min late.</span><span style=color:black;></span></td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/18/2021&amp;date_end=09/18/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/18/2021 (Sa)</a></td><td>09/18/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:54PM</td><td><span style=color:red;>Ar:  2 min late.</span><span style=color:black;></span></td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/16/2022&amp;date_end=01/16/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/16/2022 (Su)</a></td><td>01/16/2022 1:52 PM (Su)</td><td style="text-align: right;">1:54PM</td><td><span style=color:red;>Ar:  2 min late.</span><span style=color:black;></span></td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/12/2022&amp;date_end=02/12/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/12/2022 (Sa)</a></td><td>02/12/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:54PM</td><td><span style=color:red;>Ar:  2 min late.</span><span style=color:black;></span></td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/03/2022&amp;date_end=09/03/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/03/2022 (Sa)</a></td><td>09/03/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:54PM</td><td><span style=color:red;>Ar:  2 min late.</span><span style=color:black;></span></td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/28/2021&amp;date_end=08/28/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/28/2021 (Sa)</a></td><td>08/28/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:53PM</td><td><span style=color:red;>Ar:  1 min late.</span><span style=color:black;></span></td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/25/2021&amp;date_end=12/25/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/25/2021 (Sa)</a></td><td>12/25/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:53PM</td><td><span style=color:red;>Ar:  1 min late.</span><span style=color:black;></span></td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/22/2022&amp;date_end=01/22/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/22/2022 (Sa)</a></td><td>01/22/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:53PM</td><td><span style=color:red;>Ar:  1 min late.</span><span style=color:black;></span></td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/26/2022&amp;date_end=02/26/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/26/2022 (Sa)</a></td><td>02/26/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:53PM</td><td><span style=color:red;>Ar:  1 min late.</span><span style=color:black;></span></td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/05/2022&amp;date_end=03/05/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/05/2022 (Sa)</a></td><td>03/05/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:53PM</td><td><span style=color:red;>Ar:  1 min late.</span><span style=color:black;></span></td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/03/2022&amp;date_end=12/03/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/03/2022 (Sa)</a></td><td>12/03/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:53PM</td><td><span style=color:red;>Ar:  1 min late.</span><span style=color:black;></span></td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/27/2021&amp;date_end=03/27/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/27/2021 (Sa)</a></td><td>03/27/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/04/2021&amp;date_end=07/04/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/04/2021 (Su)</a></td><td>07/04/2021 1:52 PM (Su)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/24/2021&amp;date_end=07/24/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/24/2021 (Sa)</a></td><td>07/24/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/11/2021&amp;date_end=09/11/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/11/2021 (Sa)</a></td><td>09/11/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/16/2021&amp;date_end=10/16/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/16/2021 (Sa)</a></td><td>10/16/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/23/2021&amp;date_end=10/23/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/23/2021 (Sa)</a></td><td>10/23/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/20/2022&amp;date_end=02/20/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/20/2022 (Su)</a></td><td>02/20/2022 1:52 PM (Su)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/12/2022&amp;date_end=03/12/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/12/2022 (Sa)</a></td><td>03/12/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/26/2022&amp;date_end=03/26/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/26/2022 (Sa)</a></td><td>03/26/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/29/2022&amp;date_end=05/29/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/29/2022 (Su)</a></td><td>05/29/2022 1:52 PM (Su)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/09/2022&amp;date_end=07/09/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/09/2022 (Sa)</a></td><td>07/09/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/29/2022&amp;date_end=10/29/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/29/2022 (Sa)</a></td><td>10/29/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/26/2022&amp;date_end=11/26/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/26/2022 (Sa)</a></td><td>11/26/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/17/2022&amp;date_end=12/17/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/17/2022 (Sa)</a></td><td>12/17/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:52PM</td><td><span style=color:green;>Ar:  On time.</span><span style=color:black;></span></td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/20/2021&amp;date_end=02/20/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/20/2021 (Sa)</a></td><td>02/20/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/10/2021&amp;date_end=04/10/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/10/2021 (Sa)</a></td><td>04/10/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/26/2021&amp;date_end=06/26/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/26/2021 (Sa)</a></td><td>06/26/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/10/2021&amp;date_end=07/10/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/10/2021 (Sa)</a></td><td>07/10/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/04/2021&amp;date_end=09/04/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/04/2021 (Sa)</a></td><td>09/04/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/01/2022&amp;date_end=01/01/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/01/2022 (Sa)</a></td><td>01/01/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/02/2022&amp;date_end=04/02/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/02/2022 (Sa)</a></td><td>04/02/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/16/2022&amp;date_end=04/16/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/16/2022 (Sa)</a></td><td>04/16/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/28/2022&amp;date_end=05/28/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/28/2022 (Sa)</a></td><td>05/28/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/24/2022&amp;date_end=11/24/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/24/2022 (Th)</a></td><td>11/24/2022 1:52 PM (Th)</td><td style="text-align: right;">1:51PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/01/2021&amp;date_end=05/01/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/01/2021 (Sa)</a></td><td>05/01/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/11/2021&amp;date_end=12/11/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/11/2021 (Sa)</a></td><td>12/11/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/05/2022&amp;date_end=02/05/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/05/2022 (Sa)</a></td><td>02/05/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/14/2022&amp;date_end=05/14/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/14/2022 (Sa)</a></td><td>05/14/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/11/2022&amp;date_end=06/11/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/11/2022 (Sa)</a></td><td>06/11/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/18/2022&amp;date_end=06/18/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/18/2022 (Sa)</a></td><td>06/18/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/25/2022&amp;date_end=06/25/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/25/2022 (Sa)</a></td><td>06/25/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/02/2022&amp;date_end=07/02/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/02/2022 (Sa)</a></td><td>07/02/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=08/27/2022&amp;date_end=08/27/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">08/27/2022 (Sa)</a></td><td>08/27/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/10/2022&amp;date_end=12/10/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/10/2022 (Sa)</a></td><td>12/10/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:50PM</td><td><span style=color:green;>Ar:  2 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-2</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/23/2021&amp;date_end=01/23/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/23/2021 (Sa)</a></td><td>01/23/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/06/2021&amp;date_end=02/06/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/06/2021 (Sa)</a></td><td>02/06/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/13/2021&amp;date_end=02/13/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/13/2021 (Sa)</a></td><td>02/13/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/27/2021&amp;date_end=02/27/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/27/2021 (Sa)</a></td><td>02/27/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/06/2021&amp;date_end=03/06/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/06/2021 (Sa)</a></td><td>03/06/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/24/2021&amp;date_end=04/24/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/24/2021 (Sa)</a></td><td>04/24/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/15/2021&amp;date_end=05/15/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/15/2021 (Sa)</a></td><td>05/15/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/30/2021&amp;date_end=05/30/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/30/2021 (Su)</a></td><td>05/30/2021 1:52 PM (Su)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/03/2021&amp;date_end=07/03/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/03/2021 (Sa)</a></td><td>07/03/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/17/2021&amp;date_end=07/17/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/17/2021 (Sa)</a></td><td>07/17/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=07/31/2021&amp;date_end=07/31/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">07/31/2021 (Sa)</a></td><td>07/31/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/06/2021&amp;date_end=11/06/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/06/2021 (Sa)</a></td><td>11/06/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/18/2021&amp;date_end=12/18/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/18/2021 (Sa)</a></td><td>12/18/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/15/2022&amp;date_end=01/15/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/15/2022 (Sa)</a></td><td>01/15/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/05/2022&amp;date_end=11/05/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/05/2022 (Sa)</a></td><td>11/05/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/31/2022&amp;date_end=12/31/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/31/2022 (Sa)</a></td><td>12/31/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:49PM</td><td><span style=color:green;>Ar:  3 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/01/2021&amp;date_end=01/01/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/01/2021 (Fr)</a></td><td>01/01/2021 1:52 PM (Fr)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/09/2021&amp;date_end=01/09/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/09/2021 (Sa)</a></td><td>01/09/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/17/2021&amp;date_end=01/17/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/17/2021 (Su)</a></td><td>01/17/2021 1:52 PM (Su)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/20/2021&amp;date_end=03/20/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/20/2021 (Sa)</a></td><td>03/20/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/12/2021&amp;date_end=06/12/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/12/2021 (Sa)</a></td><td>06/12/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/04/2021&amp;date_end=12/04/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/04/2021 (Sa)</a></td><td>12/04/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/07/2022&amp;date_end=05/07/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/07/2022 (Sa)</a></td><td>05/07/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/21/2022&amp;date_end=05/21/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/21/2022 (Sa)</a></td><td>05/21/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=06/04/2022&amp;date_end=06/04/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">06/04/2022 (Sa)</a></td><td>06/04/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/01/2022&amp;date_end=10/01/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/01/2022 (Sa)</a></td><td>10/01/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/08/2022&amp;date_end=10/08/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/08/2022 (Sa)</a></td><td>10/08/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/24/2022&amp;date_end=12/24/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/24/2022 (Sa)</a></td><td>12/24/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=12/25/2022&amp;date_end=12/25/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">12/25/2022 (Su)</a></td><td>12/25/2022 1:52 PM (Su)</td><td style="text-align: right;">1:48PM</td><td><span style=color:green;>Ar:  4 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-4</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/02/2021&amp;date_end=01/02/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/02/2021 (Sa)</a></td><td>01/02/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=01/16/2021&amp;date_end=01/16/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">01/16/2021 (Sa)</a></td><td>01/16/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=03/13/2021&amp;date_end=03/13/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">03/13/2021 (Sa)</a></td><td>03/13/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/03/2021&amp;date_end=04/03/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/03/2021 (Sa)</a></td><td>04/03/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=05/22/2021&amp;date_end=05/22/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">05/22/2021 (Sa)</a></td><td>05/22/2021 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/30/2022&amp;date_end=04/30/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/30/2022 (Sa)</a></td><td>04/30/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/15/2022&amp;date_end=10/15/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/15/2022 (Sa)</a></td><td>10/15/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=10/22/2022&amp;date_end=10/22/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">10/22/2022 (Sa)</a></td><td>10/22/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:47PM</td><td><span style=color:green;>Ar:  5 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-5</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=02/14/2021&amp;date_end=02/14/2021&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">02/14/2021 (Su)</a></td><td>02/14/2021 1:52 PM (Su)</td><td style="text-align: right;">1:46PM</td><td><span style=color:green;>Ar:  6 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-6</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=04/23/2022&amp;date_end=04/23/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">04/23/2022 (Sa)</a></td><td>04/23/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:46PM</td><td><span style=color:green;>Ar:  6 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-6</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=11/12/2022&amp;date_end=11/12/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/12/2022 (Sa)</a></td><td>11/12/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:46PM</td><td><span style=color:green;>Ar:  6 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-6</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/17/2022&amp;date_end=09/17/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/17/2022 (Sa)</a></td><td>09/17/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:44PM</td><td><span style=color:green;>Ar:  8 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-8</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=463&amp;date_start=09/24/2022&amp;date_end=09/24/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">09/24/2022 (Sa)</a></td><td>09/24/2022 1:52 PM (Sa)</td><td style="text-align: right;">1:43PM</td><td><span style=color:green;>Ar:  9 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-9</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+<tr><td style="text-align: right;" colspan="7"><a href="average_delays.php?train_num=463&amp;date_start=09/24/2022&amp;date_end=08/20/2022">Average</a> Ar delay:&nbsp; <span style="color:red;">  1 minute late</span>
+</td></tr>
+<tr><td style="text-align: right;" colspan="7"><a href="average_delays.php?train_num=463&amp;stat=med&amp;date_start=09/24/2022&amp;date_end=08/20/2022">Median</a> Ar delay:&nbsp; <span style="color:green;">  1 minute early</span>
+</td></tr>
+</table><br>
+
+<br><hr>
+<p class="navigation_bot5">
+Database last updated Wednesday January 11, 2023 4:28 AM EST<br>
+<br>Amtrak Status Maps data provided and maintained by <a href="http://statusmaps.com">statusmaps.com</a>
+<br>This website <a href="https://juckins.net">(juckins.net)</a> is not affiliated with <a href="http://amtrak.com">amtrak.com</a> or Amtrak (the National Railroad Passenger Corporation)
+</p>
+</div>
+</div>
+</body>
+</html>
+

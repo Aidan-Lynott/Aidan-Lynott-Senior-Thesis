@@ -1,0 +1,166 @@
+
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H73C69DFBC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H73C69DFBC');
+</script>
+<meta name="generator" content="HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+<title>ASMAD - Amtrak Status Maps Archive Database - Train History Search</title>
+<meta name="description" content="ASMAD - Amtrak Status Maps History and Archive">
+<meta name="keywords" content="ASMAD - Search Past Amtrak Performance, Historical Amtrak on-time performance data, Amtrak Status Maps history, Amtrak Status Maps archive, statusmaps history, statusmaps.com history, statusmaps archive, statusmaps.com archive">
+<meta name="author" content="Christopher Juckins">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../js/latest/jquery-ui.css">
+<script src="../js/latest/external/jquery/jquery.js"></script>
+<script src="../js/latest/jquery-ui.min.js"></script>
+
+<script>
+// http://stackoverflow.com/questions/233553/how-do-i-pre-populate-a-jquery-datepicker-textbox-with-todays-date
+// http://stackoverflow.com/questions/3539292/ipad-web-application-how-do-i-prevent-the-keyboard-from-popping-up-on-jquery-da
+
+$(function() {
+  $( "#from" ).datepicker({
+  showOn: "button",
+  buttonImage: "../img/cal-icon.png",
+  buttonImageOnly: true,
+  showButtonPanel: true,
+  showAnim: 'slideDown',
+  //showAnim: '',
+  changeMonth: true,
+  changeYear: true,
+  buttonText: "Select date",
+  dateFormat: 'mm/dd/yy',
+  // earliest train data available
+  minDate: '07/04/2006',
+  // latest date is today
+  maxDate: '0',
+  //beforeShow: function() {    
+  //  $(".ui-datepicker").css('font-size', 10);
+  //},
+  // reduce text size, prevent iPad popup keyboard
+  beforeShow:   function(dateText, inst) { 
+    $(this).attr("disabled", true); 
+    //$(".ui-datepicker").css('font-size', 10);
+  },
+  // allow iPad popup keyboard
+  onClose: function(dateText, inst) { 
+    $(this).attr("disabled", false); 
+  }
+  });
+
+  $( "#to" ).datepicker({
+  showOn: "button",
+  buttonImage: "../img/cal-icon.png",
+  buttonImageOnly: true,
+  showButtonPanel: true,
+  showAnim: 'slideDown',
+  //showAnim: '',
+  changeMonth: true,
+  changeYear: true,
+  buttonText: "Select date",
+  dateFormat: 'mm/dd/yy',
+  // earliest train data available
+  minDate: '07/04/2006',
+  // latest date is today
+  maxDate: '0',
+  //beforeShow: function(){    
+  //  $(".ui-datepicker").css('font-size', 10);
+  //}
+  // reduce text size, prevent iPad popup keyboard
+  beforeShow:   function(dateText, inst) { 
+    $(this).attr("disabled", true); 
+    //$(".ui-datepicker").css('font-size', 10);
+  },
+  // allow iPad popup keyboard
+  onClose: function(dateText, inst) { 
+    $(this).attr("disabled", false); 
+  }
+  });
+});
+
+</script>
+<link href="main.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="stretch-padding">
+<div id="page-wrap">
+
+
+
+
+
+
+<script>
+if (top.location != location) {
+  document.write('<p class="content"><a style="text-decoration:underline;" target="_top" href="/amtrak_status/archive/html/history.php?train_num=2217&station=WAS&date_start=01%2F01%2F2021&date_end=12%2F31%2F2022&df1=1&df2=1&df3=1&df4=1&df5=1&df6=1&df7=1&sort=d_ar&sort_dir=DESC&co=gt&limit_mins=&dfon=1">Click to see Full Page of Archive Results</a></p><br>')
+}
+</script>
+
+<a href="home.php"><span class="logoparent"><span class="logochild">ASMAD</span></span>
+<span class="titlewithlogo">Amtrak Status Maps Archive Database</span><br>
+<span class="titletag">Historical Amtrak on-time performance data</span></a>
+<p class="navigation_top5"><a href="home.php"><b>Home</b></a> &nbsp;&nbsp; <a href="search.php"><b>Search Amtrak Data</b></a> &nbsp;&nbsp; <a href="resources.php"><b>Amtrak Resources</b></a> &nbsp;&nbsp; <a href="help.php"><b>Help</b></a> &nbsp;&nbsp; <a href="about.php"><b>About</b></a></p>
+<hr>
+<p class="content-i-bold">Train Number and/or Station Search of Past Amtrak Performance</p>
+<p class="content">Here you can search Amtrak train performance by their stations and/or train numbers. The list will show how 
+late (or early) a particular train departed or arrived at a station for a range of dates.<br><br>
+To begin, enter the train number or wildcards such as "30*", "2100-2200", "3,4,5,6" or "all". Include the dates and optional 
+<a href="stations.php">station code</a>.<br><br>
+Graphical displays of performance can be made with the <a href="amtrak_delays_charts.php">Google Chart <img src="../img/developers-logo_16px.png" alt="Google Chart icon"></a> page.
+<div class="form_indent">
+<form id="query" action="/amtrak_status/archive/html/history.php" method="get"><fieldset class="fieldset1">
+<p class="content-bold">Train number: <input type="text" size="9"  maxlength="500" name="train_num" value="2217">&nbsp;&nbsp;and/or <a href="stations.php">Station code</a>: <input type="text" size="3" maxlength="3" name="station" value="WAS">
+<p class="content-bold">Start date: <input id="from" type="text" size="10" maxlength="10" name="date_start" value="01/01/2021">&nbsp;&nbsp;&nbsp;End date (optional): <input id="to" type="text" size="10" maxlength="10" name="date_end" value="12/31/2022">&nbsp;&nbsp;
+
+<p class="content-bold">Originating on: <input class="input-valign" type="checkbox" name="df1" value="1" checked="checked">Su &nbsp;<input class="input-valign" type="checkbox" name="df2" value="1" checked="checked">Mo &nbsp;<input class="input-valign" type="checkbox" name="df3" value="1" checked="checked">Tu &nbsp;<input class="input-valign" type="checkbox" name="df4" value="1" checked="checked">We &nbsp;<input class="input-valign" type="checkbox" name="df5" value="1" checked="checked">Th &nbsp;<input class="input-valign" type="checkbox" name="df6" value="1" checked="checked">Fr &nbsp;<input class="input-valign" type="checkbox" name="df7" value="1" checked="checked">Sa
+<p class="content-bold">Sort results by: <input class="input-valign" name="sort" type="radio" value="schDp" >Scheduled DP <input class="input-valign" name="sort" type="radio" value="schAr" >Scheduled AR <input class="input-valign" name="sort" type="radio" value="d_dp" >DP Delays <input class="input-valign" name="sort" type="radio" value="d_ar" checked>AR Delays
+<p class="content-bold">Sort direction: <input class="input-valign" type="radio" name="sort_dir" value="ASC" >Ascending <input class="input-valign" type="radio" name="sort_dir" value="DESC" checked>Descending
+<p class="content-bold-gray">Optional: show delays <select name="co"><option value="gt" selected>&gt;</option>
+<option value="gteq">&gt;=</option>
+<option value="eq">=</option>
+<option value="lt">&lt;</option>
+<option value="lteq">&lt;=</option>
+</select> <input type="text" size="4" maxlength="4" name="limit_mins" value=""> minutes
+
+<p class="content"><input class="myButton" type="submit" value="Find Data"> &nbsp;<input type="hidden" name="dfon" value="1"><input type="button" class="myButton" value="Reset" onClick="location.href='/amtrak_status/archive/html/history.php'">
+</fieldset>
+
+</form>
+
+</div>
+<p class="content">2 results found. 
+<a href="historychart.php?train_num=2217&amp;station=WAS&amp;date_start=01%2F01%2F2021&amp;date_end=12%2F31%2F2022&amp;sort=d_ar&amp;chartsize=2&amp;smooth=0">(View chart)</a></p>
+<table>
+<tr><th style="text-align:center;" colspan="7">History for Amtrak 2217 at WAS (Washington - Union Station, DC)</th>
+</tr>
+<tr><th>Origin Date</th><th>Sch Ar</th><th>Act Ar</th><th>Comments</th><th>Ar Delay (mins)</th><th>Service Disruption</th><th>Cancellations</th></tr>
+
+<tr><td><a href="history_file.php?train_num=2217&amp;date_start=11/26/2022&amp;date_end=11/26/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/26/2022 (Sa)</a></td><td>11/26/2022 4:55 PM (Sa)</td><td style="text-align: right;">4:58PM</td><td><span style=color:red;>Ar:  3 min late.</span><span style=color:black;></span></td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+
+<tr><td><a href="history_file.php?train_num=2217&amp;date_start=11/19/2022&amp;date_end=11/19/2022&amp;dfon=1&amp;df1=1&amp;df2=1&amp;df3=1&amp;df4=1&amp;df5=1&amp;df6=1&amp;df7=1&amp;sd=-1&amp;c=-1">11/19/2022 (Sa)</a></td><td>11/19/2022 4:55 PM (Sa)</td><td style="text-align: right;">4:54PM</td><td><span style=color:green;>Ar:  1 min early.</span><span style=color:black;></span></td><td style="text-align: center;">-1</td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr>
+<tr><td style="text-align: right;" colspan="7"><a href="average_delays.php?train_num=2217&amp;date_start=11/19/2022&amp;date_end=11/26/2022">Average</a> Ar delay:&nbsp; <span style="color:red;">  1 minute late</span>
+</td></tr>
+<tr><td style="text-align: right;" colspan="7"><a href="average_delays.php?train_num=2217&amp;stat=med&amp;date_start=11/19/2022&amp;date_end=11/26/2022">Median</a> Ar delay:&nbsp; <span style="color:red;">  1 minute late</span>
+</td></tr>
+</table><br>
+
+<br><hr>
+<p class="navigation_bot5">
+Database last updated Wednesday January 11, 2023 4:28 AM EST<br>
+<br>Amtrak Status Maps data provided and maintained by <a href="http://statusmaps.com">statusmaps.com</a>
+<br>This website <a href="https://juckins.net">(juckins.net)</a> is not affiliated with <a href="http://amtrak.com">amtrak.com</a> or Amtrak (the National Railroad Passenger Corporation)
+</p>
+</div>
+</div>
+</body>
+</html>
+
