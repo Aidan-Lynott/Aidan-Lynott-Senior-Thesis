@@ -1,0 +1,1 @@
+This is the GitHub for Aidan Lynott's Princeton Senior Thesis. If you are just interested in reading the thesis, that file is AidanLynottSeniorThesis.pdf. Otherwise, feel free to look at all the code included in this repository! Enjoy your stay!
